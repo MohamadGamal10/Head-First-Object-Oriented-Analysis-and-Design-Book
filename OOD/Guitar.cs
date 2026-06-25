@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOD.ch1
+namespace ch1
 {
     public class Guitar
     {

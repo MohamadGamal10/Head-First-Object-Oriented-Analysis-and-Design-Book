@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOD.ch1.enums
+namespace ch1.enums
 {
-    public enum WoodEnum
+    public enum BuilderEnum
     {
-        Alder,
-        Mahogany,
-        Rosewood,
-        Maple,
-        Spruce
+        Fender,
+        Gibson,
+        Martin,
+        Taylor
     }
 }

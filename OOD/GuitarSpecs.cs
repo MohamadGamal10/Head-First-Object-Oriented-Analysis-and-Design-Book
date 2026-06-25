@@ -1,4 +1,4 @@
-﻿using OOD.ch1.enums;
+﻿using ch1.enums;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOD.ch1
+namespace ch1
 {
     public class GuitarSpecs
     {

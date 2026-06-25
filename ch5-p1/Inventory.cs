@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOD.ch1
+namespace ch5_p1
 {
     public class Inventory
     {

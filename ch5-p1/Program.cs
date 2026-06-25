@@ -1,6 +1,6 @@
-﻿using OOD.ch1.enums;
+﻿using ch5_p1.enums;
 
-namespace OOD.ch1
+namespace ch5_p1
 {
     internal class Program
     {
