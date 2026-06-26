@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace ch5_p1.enums
 {
-    internal class Style
+    public enum StyleEnum
     {
+        A,
+        F
     }
 }

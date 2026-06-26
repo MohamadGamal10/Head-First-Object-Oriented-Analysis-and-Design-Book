@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace ch5_p1
 {
-    internal class Mandolin
+    public class Mandolin: Instrument
     {
+        public MandolinSpecs Specs { get; set; }
+
+        public Mandolin(
+           string serialNumber,
+           int price,
+           MandolinSpecs specs
+        ): base(serialNumber, price)
+        {
+            Specs = specs;
+        }
     }
 }

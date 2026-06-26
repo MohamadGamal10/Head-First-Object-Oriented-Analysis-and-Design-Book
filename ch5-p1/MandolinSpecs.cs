@@ -8,46 +8,34 @@ using System.Threading.Tasks;
 
 namespace ch5_p1
 {
-    public class GuitarSpecs
+    public class MandolinSpecs : InstrumentSpecs
     {
-        public BuilderEnum? Builder { get; set; }
-        public string Model { get; set; }
-        public TypeEnum? Type { get; set; }
-        public WoodEnum? BackWood { get; set; }
-        public WoodEnum? TopWood { get; set; }
-        public int NumStrings { get; set; }
+        private StyleEnum? Style { get; set; }
 
-        public GuitarSpecs(
+        public MandolinSpecs(
       BuilderEnum? builder,
       string model,
       TypeEnum? type,
       WoodEnum? backWood,
       WoodEnum? topWood,
-            int numStrings)
+            StyleEnum? style
+) : base(builder, model, type, backWood, topWood)
         {
-            Builder = builder;
-            Model = model;
-            Type = type;
-            BackWood = backWood;
-            TopWood = topWood;
-            NumStrings = numStrings;
+            Style = style;
         }
 
-        public bool equals(GuitarSpecs specs)
+        public override bool equals(InstrumentSpecs specs)
         {
-            if (specs.Builder != null && specs.Builder != Builder)
+            if (!base.equals(specs))
                 return false;
-            if (specs.Model != null && specs.Model != "" && specs.Model.ToLower() != Model.ToLower())
+
+            if (specs is not MandolinSpecs mandolinSpecs)
                 return false;
-            if (specs.Type != null && specs.Type != Type)
+
+            if (mandolinSpecs.Style != null && mandolinSpecs.Style != Style)
                 return false;
-            if (specs.BackWood != null && specs.BackWood != BackWood)
-                return false;
-            if (specs.TopWood != null && specs.TopWood != TopWood)
-                return false;
-            if (specs.TopWood != null && specs.NumStrings != NumStrings)
-                return false;
+
             return true;
-        } 
+        }
     }
 }

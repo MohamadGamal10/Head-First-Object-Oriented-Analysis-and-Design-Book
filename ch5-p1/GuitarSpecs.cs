@@ -8,46 +8,34 @@ using System.Threading.Tasks;
 
 namespace ch5_p1
 {
-    public class GuitarSpecs
+    public class GuitarSpecs : InstrumentSpecs
     {
-        public BuilderEnum? Builder { get; set; }
-        public string Model { get; set; }
-        public TypeEnum? Type { get; set; }
-        public WoodEnum? BackWood { get; set; }
-        public WoodEnum? TopWood { get; set; }
         public int NumStrings { get; set; }
 
         public GuitarSpecs(
-      BuilderEnum? builder,
-      string model,
-      TypeEnum? type,
-      WoodEnum? backWood,
-      WoodEnum? topWood,
-            int numStrings)
+              BuilderEnum? builder,
+              string model,
+              TypeEnum? type,
+              WoodEnum? backWood,
+              WoodEnum? topWood,
+              int numStrings
+        ) : base(builder, model, type, backWood, topWood)
         {
-            Builder = builder;
-            Model = model;
-            Type = type;
-            BackWood = backWood;
-            TopWood = topWood;
             NumStrings = numStrings;
         }
 
-        public bool equals(GuitarSpecs specs)
+        public override bool equals(InstrumentSpecs specs)
         {
-            if (specs.Builder != null && specs.Builder != Builder)
+            if (!base.equals(specs))
                 return false;
-            if (specs.Model != null && specs.Model != "" && specs.Model.ToLower() != Model.ToLower())
+
+            if(specs is not GuitarSpecs guitarSpecs)
                 return false;
-            if (specs.Type != null && specs.Type != Type)
+
+            if (guitarSpecs.NumStrings != NumStrings)
                 return false;
-            if (specs.BackWood != null && specs.BackWood != BackWood)
-                return false;
-            if (specs.TopWood != null && specs.TopWood != TopWood)
-                return false;
-            if (specs.TopWood != null && specs.NumStrings != NumStrings)
-                return false;
+
             return true;
-        } 
+        }
     }
 }
