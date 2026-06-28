@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -10,22 +11,31 @@ namespace ch5_p1
 {
     public class Inventory
     {
-        private Guitar[] guitars { get; set; }
-        public Inventory(Guitar[] guitars)
+        private Instrument[] instruments { get; set; }
+        public Inventory(Instrument[] instruments)
         {
-            this.guitars = guitars;
-        }
-        public void addGuitar(Guitar guitar)
-        {
-            guitars = guitars.Append(guitar).ToArray();
+            this.instruments = instruments;
         }
 
-        public Guitar? getGuitar(string serialNumber)
+        public void addInstrument(string serialNumber, int price, InstrumentSpecs specs)
         {
-            Guitar? guitar = guitars.FirstOrDefault(x => x.SerialNumber == serialNumber);
-            if (guitar != null)
+            if (specs is GuitarSpecs guitarSpecs)
             {
-                return guitar;
+                instruments = instruments.Append(new Guitar(serialNumber, price, guitarSpecs)).ToArray();
+            }
+            else if (specs is MandolinSpecs mandolinSpecs)
+            {
+                instruments = instruments.Append(new Mandolin(serialNumber, price, mandolinSpecs)).ToArray();
+            }
+        }
+
+        // return instrument
+        public Instrument? getGuitar(string serialNumber)
+        {
+            Instrument? instrument = instruments.FirstOrDefault(x => x.SerialNumber == serialNumber);
+            if (instrument != null)
+            {
+                return instrument;
             }
             else
             {
@@ -33,17 +43,17 @@ namespace ch5_p1
             }
         }
 
-        public Guitar[] search(GuitarSpecs serchGuitar)
+        // return guitar[] or instrument[]
+        public T[] search<T>(InstrumentSpecs serchInstrument) where T : Instrument
         {
-            Guitar[] result = new Guitar[] { };
-            foreach (var item in guitars)
+            List<T> result = new List<T>();
+            foreach (var item in instruments)
             {
-                if(item.Specs.equals(serchGuitar))
-                    result = result.Append(item).ToArray();
+                if (item is T instrument && instrument.Specs.equals(serchInstrument))
+                    result.Add(instrument);
             }
-            return result;
+            return result.ToArray();
         }
-
 
     }
 }

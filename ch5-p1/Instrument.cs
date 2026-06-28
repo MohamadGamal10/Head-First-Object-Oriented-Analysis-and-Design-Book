@@ -10,14 +10,17 @@ namespace ch5_p1
     {
         public string SerialNumber { get; set; }
         public int Price { get; set; }
+        public InstrumentSpecs Specs { get; set; }
 
         public Instrument(
        string serialNumber,
-       int price
-            )
+       int price,
+       InstrumentSpecs specs
+        )
         {
             SerialNumber = serialNumber;
             Price = price;
+            Specs = specs;
         }
     }
 }

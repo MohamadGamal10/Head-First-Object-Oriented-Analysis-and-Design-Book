@@ -8,15 +8,13 @@ namespace ch5_p1
 {
     public class Mandolin: Instrument
     {
-        public MandolinSpecs Specs { get; set; }
 
         public Mandolin(
            string serialNumber,
            int price,
            MandolinSpecs specs
-        ): base(serialNumber, price)
+        ): base(serialNumber, price, specs)
         {
-            Specs = specs;
         }
     }
 }

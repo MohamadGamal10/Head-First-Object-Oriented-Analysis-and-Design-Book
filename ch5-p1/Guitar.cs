@@ -8,15 +8,13 @@ namespace ch5_p1
 {
     public class Guitar : Instrument
     {
-        public GuitarSpecs Specs { get; set; }
 
         public Guitar(
        string serialNumber,
        int price,
        GuitarSpecs specs
-            ) : base(serialNumber, price)
+            ) : base(serialNumber, price, specs)
         {
-            Specs = specs;
         }
 
     }

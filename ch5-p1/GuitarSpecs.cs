@@ -10,7 +10,7 @@ namespace ch5_p1
 {
     public class GuitarSpecs : InstrumentSpecs
     {
-        public int NumStrings { get; set; }
+        public int? NumStrings { get; set; }
 
         public GuitarSpecs(
               BuilderEnum? builder,
@@ -18,7 +18,7 @@ namespace ch5_p1
               TypeEnum? type,
               WoodEnum? backWood,
               WoodEnum? topWood,
-              int numStrings
+              int? numStrings
         ) : base(builder, model, type, backWood, topWood)
         {
             NumStrings = numStrings;
@@ -32,7 +32,7 @@ namespace ch5_p1
             if(specs is not GuitarSpecs guitarSpecs)
                 return false;
 
-            if (guitarSpecs.NumStrings != NumStrings)
+            if (guitarSpecs.NumStrings != null && guitarSpecs.NumStrings != NumStrings)
                 return false;
 
             return true;
